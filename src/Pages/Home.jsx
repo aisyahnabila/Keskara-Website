@@ -14,9 +14,9 @@ const Home = () => {
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item">
-                  <a href="#">Home</a>
+                  <a href="#">Menu</a>
                 </li>
-                <li class="breadcrumb-item active">Dashboard v1</li>
+                <li class="breadcrumb-item active">Papan Utama</li>
               </ol>
             </div>
             {/* /.col */}
