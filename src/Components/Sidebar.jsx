@@ -1,6 +1,12 @@
 import React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isActive = (path) => {
+    return location.pathname === path ? "active" : "";
+  };
   return (
     <aside class="main-sidebar sidebar-light-danger elevation-4">
       {/* Brand Logo */}
@@ -42,13 +48,21 @@ const Sidebar = () => {
          with font-awesome or any other icon font library */}
             <li class="nav-header">MENU</li>
             <li class="nav-item">
-              <a href="pages/calendar.html" class="nav-link active">
+              <a
+                onClick={() => navigate("/")}
+                type="button"
+                class={`nav-link ${isActive("/")}`}
+              >
                 <i class="nav-icon fas fa-server" />
                 <p>Papan Utama</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="pages/calendar.html" class="nav-link">
+              <a
+                onClick={() => navigate("/DaftarAnggota")}
+                type="button"
+                class={`nav-link ${isActive("/DaftarAnggota")}`}
+              >
                 <i class="nav-icon fas fa-address-book" />
                 <p>
                   Daftar Anggota
@@ -58,36 +72,32 @@ const Sidebar = () => {
             </li>
             <li class="nav-header">PENAMBAHAN DATA</li>
             <li class="nav-item">
-              <a href="pages/calendar.html" class="nav-link">
+              <a
+                onClick={() => navigate("/TambahDataAnggota")}
+                type="button"
+                class={`nav-link ${isActive("/TambahDataAnggota")}`}
+              >
                 <i class="nav-icon fas fa-user-plus" />
-                <p>
-                  Tambah Data Anggota
-                </p>
+                <p>Tambah Data Anggota</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="pages/calendar.html" class="nav-link">
                 <i class="nav-icon fas fa-plus" />
-                <p>
-                 Tambah User
-                </p>
+                <p>Tambah User</p>
               </a>
             </li>
             <li class="nav-header">OPSI LAIN</li>
             <li class="nav-item">
               <a href="pages/calendar.html" class="nav-link">
                 <i class="nav-icon fas fa-user" />
-                <p>
-                  Akun Saya
-                </p>
+                <p>Akun Saya</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="pages/calendar.html" class="nav-link">
                 <i class="nav-icon fas fa-sign-out-alt" />
-                <p>
-                 Keluar
-                </p>
+                <p>Keluar</p>
               </a>
             </li>
           </ul>

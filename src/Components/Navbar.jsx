@@ -14,7 +14,6 @@ const Navbar = () => {
             Beranda
           </a>
         </li>
-
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
