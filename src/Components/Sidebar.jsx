@@ -12,11 +12,11 @@ const Sidebar = () => {
       {/* Brand Logo */}
       <a href="index3.html" class="brand-link">
         <img
-          src="dist/img/polres/logopolres.png"
-          alt="AdminLTE Logo"
+          src="dist/img/polres/Lambang_Polda_Jatim.png"
+          alt="logo-polres"
           class="brand-image"
         />
-        <span class="brand-text font-weight-bold">KESKERA</span>
+        <span class="brand-text font-weight-bold">KESKARA</span>
       </a>
       {/* Sidebar */}
       <div class="sidebar">
