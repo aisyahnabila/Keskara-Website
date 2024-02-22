@@ -12,7 +12,7 @@ const Sidebar = () => {
       {/* Brand Logo */}
       <a href="index3.html" class="brand-link">
         <img
-          src="dist/img/polres/logopolres.png"
+          src="src/assets/polres/logopolres.png"
           alt="AdminLTE Logo"
           class="brand-image"
         />
