@@ -12,7 +12,7 @@ const Sidebar = () => {
       {/* Brand Logo */}
       <a href="index3.html" class="brand-link">
         <img
-          src="dist/img/polres/Lambang_Polda_Jatim.png"
+          src="dist/img/polres/logopolres.png"
           alt="logo-polres"
           class="brand-image"
         />
