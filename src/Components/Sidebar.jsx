@@ -12,8 +12,8 @@ const Sidebar = () => {
       {/* Brand Logo */}
       <a href="index3.html" class="brand-link">
         <img
-          src="dist/img/polres/logopolres.png"
-          alt="logo-polres"
+          src="src/assets/polres/logopolres.png"
+          alt="Logo"
           class="brand-image"
         />
         <span class="brand-text font-weight-bold">KESKARA</span>
