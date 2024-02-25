@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   return (
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <ul class="navbar-nav">
@@ -10,7 +12,7 @@ const Navbar = () => {
           </a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="index3.html" class="nav-link">
+          <a type="button" onClick={() => navigate('/')} class="nav-link">
             Beranda
           </a>
         </li>

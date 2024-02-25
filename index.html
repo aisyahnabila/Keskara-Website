@@ -29,12 +29,19 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"> -->
+  <!-- DataTables Bootstrap 4 CSS -->
+  <!-- <link rel="stylesheet" href="https://cdn.datatables.net/2.0.0/css/dataTables.bootstrap4.css"> -->
 </head>
+
 
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
     <div class="preloader flex-column justify-content-center align-items-center">
-      <img class="animation__shake" src="src/assets/polres/logopolres.png" alt="AdminLTELogo"  width="100">
+      <img class="animation__shake" src="src/assets/polres/logopolres.png" alt="AdminLTELogo" width="100">
     </div>
     <div id="root"></div>
   </div>
@@ -72,7 +79,34 @@
   <script src="dist/js/adminlte.js"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="dist/js/pages/dashboard.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <!-- Include Popper.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <!-- Include Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Include DataTables JS -->
+  <script src="https://cdn.datatables.net/2.0.0/js/dataTables.js"></script>
+  <!-- Include DataTables Bootstrap 4 JS -->
+  <script src="https://cdn.datatables.net/2.0.0/js/dataTables.bootstrap4.js"></script>
 
+  <!-- Manual -->
+  <script src="dist/js/adminlte.min.js"></script>
+  <!-- <script>
+    $(function () {
+      $("#daftaranggota").DataTable({
+        "responsive": true, "lengthChange": false, "autoWidth": false,
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+      $('#daftaranggota').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+  </script> -->
 </body>
 
 </html>
