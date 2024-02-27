@@ -1,16 +1,20 @@
 import Navbar from "../Components/Navbar";
 import Sidebar from "../Components/Sidebar";
 import Footer from "../Components/Footer";
-import { useMemo } from "react";
+import { useMemo, useCallback } from "react";
 import {
   MaterialReactTable,
   useMaterialReactTable,
+  MRT_ActionMenuItem, // Menambahkan impor MRT_ActionMenuItem
 } from "material-react-table";
 import { mkConfig, generateCsv, download } from "export-to-csv";
 import { Box, Button } from "@mui/material";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
-import { jsPDF } from "jspdf"; //or use your library of choice here
+import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
+import { useNavigate } from "react-router-dom";
+import { Edit, Delete } from '@mui/icons-material';
+import { utils, writeFile } from "xlsx";
 const csvConfig = mkConfig({
   fieldSeparator: ",",
   decimalSeparator: ".",
@@ -91,6 +95,7 @@ const data = [
 ];
 
 const DaftarAnggota = () => {
+  const navigate = useNavigate();
   const columns = useMemo(
     () => [
       {
@@ -167,7 +172,7 @@ const DaftarAnggota = () => {
       body: tableData,
     });
 
-    doc.save("mrt-pdf-example.pdf");
+    doc.save("DataAnggota.pdf");
   };
   const handleExportData = () => {
     const csv = generateCsv(csvConfig)(data);
@@ -194,7 +199,7 @@ const DaftarAnggota = () => {
         <Button
           //export all data that is currently in the table (ignore pagination, sorting, filtering, etc.)
           onClick={handleExportData}
-          startIcon={<FileDownloadIcon />}
+          startIcon={<i class="fas fa-file-excel"></i>}
         >
           Export To Excel
         </Button>
@@ -204,7 +209,7 @@ const DaftarAnggota = () => {
           onClick={() =>
             handleExportRows(table.getPrePaginationRowModel().rows)
           }
-          startIcon={<FileDownloadIcon />}
+          startIcon={<i class="fas fa-file-pdf"></i>}
         >
           Export TO PDF
         </Button>
@@ -244,12 +249,33 @@ const DaftarAnggota = () => {
                   <button
                     type="button"
                     class="btn btn-info mb-2"
-                    data-toggle="modal"
-                    data-target="#modal-xl"
+                    onClick={() => navigate("/TambahDataAnggota")}
                   >
                     + Tambah Data Anggota
                   </button>
-                  <MaterialReactTable table={table} />
+                  <MaterialReactTable
+                    columns={columns}
+                    data={data}
+                    enableFullScreenToggle={false}
+                    enableRowActions
+                    positionActionsColumn="last"
+                    renderRowActionMenuItems={({ row, table }) => [
+                      <MRT_ActionMenuItem //or just use a normal MUI MenuItem component
+                        icon={<Edit />}
+                        key="edit"
+                        label="Edit"
+                        onClick={() => console.info("Edit")}
+                        table={table}
+                      />,
+                      <MRT_ActionMenuItem
+                        icon={<Delete />}
+                        key="delete"
+                        label="Delete"
+                        onClick={() => console.info("Delete")}
+                        table={table}
+                      />,
+                    ]}
+                  />
                 </div>
               </div>
             </div>
