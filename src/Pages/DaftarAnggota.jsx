@@ -1,19 +1,26 @@
 import Navbar from "../Components/Navbar";
 import Sidebar from "../Components/Sidebar";
 import Footer from "../Components/Footer";
-import { useMemo, useCallback } from "react";
+import { useMemo, useCallback, useState } from "react";
 import {
   MaterialReactTable,
   useMaterialReactTable,
-  MRT_ActionMenuItem, // Menambahkan impor MRT_ActionMenuItem
+  MRT_ActionMenuItem,
 } from "material-react-table";
 import { mkConfig, generateCsv, download } from "export-to-csv";
-import { Box, Button } from "@mui/material";
+import {
+  Box,
+  Button,
+  CircularProgress,
+  IconButton,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 import { useNavigate } from "react-router-dom";
-import { Edit, Delete } from '@mui/icons-material';
+import { Edit, Delete, FindInPage } from "@mui/icons-material";
 import { utils, writeFile } from "xlsx";
 const csvConfig = mkConfig({
   fieldSeparator: ",",
@@ -96,6 +103,12 @@ const data = [
 
 const DaftarAnggota = () => {
   const navigate = useNavigate();
+  const [selectedMember, setSelectedMember] = useState(null);
+
+  // Function to handle view button click
+  const handleViewClick = (member) => {
+    setSelectedMember(member);
+  };
   const columns = useMemo(
     () => [
       {
@@ -128,36 +141,36 @@ const DaftarAnggota = () => {
         header: "Sakit",
         size: 150,
       },
-      {
-        accessorKey: "punyaRumah",
-        header: "Punya Rumah",
-        size: 150,
-      },
-      {
-        accessorKey: "overWeight",
-        header: "Over Weight",
-        size: 150,
-      },
-      {
-        accessorKey: "masalah",
-        header: "Masalah",
-        size: 150,
-      },
-      {
-        accessorKey: "namaIstri",
-        header: "Nama Istri",
-        size: 150,
-      },
-      {
-        accessorKey: "namaAnak",
-        header: "Nama Anak",
-        size: 150,
-      },
-      {
-        accessorKey: "nomorKPI",
-        header: "Nomor KPI",
-        size: 150,
-      },
+      // {
+      //   accessorKey: "punyaRumah",
+      //   header: "Punya Rumah",
+      //   size: 150,
+      // },
+      // {
+      //   accessorKey: "overWeight",
+      //   header: "Over Weight",
+      //   size: 150,
+      // },
+      // {
+      //   accessorKey: "masalah",
+      //   header: "Masalah",
+      //   size: 150,
+      // },
+      // {
+      //   accessorKey: "namaIstri",
+      //   header: "Nama Istri",
+      //   size: 150,
+      // },
+      // {
+      //   accessorKey: "namaAnak",
+      //   header: "Nama Anak",
+      //   size: 150,
+      // },
+      // {
+      //   accessorKey: "nomorKPI",
+      //   header: "Nomor KPI",
+      //   size: 150,
+      // },
     ],
     []
   );
@@ -239,48 +252,127 @@ const DaftarAnggota = () => {
           </div>
         </div>
         <section class="content">
-          <div class="container-fluid bg-white">
+          <div class="container-fluid">
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
                   <h3 class="card-title">Daftar Anggota</h3>
                 </div>
                 <div class="card-body">
-                  <button
+                  {/* <button
                     type="button"
                     class="btn btn-info mb-2"
                     onClick={() => navigate("/TambahDataAnggota")}
                   >
                     + Tambah Data Anggota
-                  </button>
+                  </button> */}
                   <MaterialReactTable
                     columns={columns}
                     data={data}
-                    enableFullScreenToggle={false}
                     enableRowActions
                     positionActionsColumn="last"
-                    renderRowActionMenuItems={({ row, table }) => [
-                      <MRT_ActionMenuItem //or just use a normal MUI MenuItem component
-                        icon={<Edit />}
-                        key="edit"
-                        label="Edit"
-                        onClick={() => console.info("Edit")}
-                        table={table}
-                      />,
-                      <MRT_ActionMenuItem
-                        icon={<Delete />}
-                        key="delete"
-                        label="Delete"
-                        onClick={() => console.info("Delete")}
-                        table={table}
-                      />,
-                    ]}
+                    renderRowActions={({ row }) => (
+                      <Box sx={{ display: "flex" }}>
+                        <Tooltip title="Lihat">
+                          <button
+                            type="button"
+                            className="btn btn-transparent btn-sm"
+                            data-toggle="modal"
+                            data-target="#view"
+                            onClick={() => handleViewClick(row.original)} // Set selected member when view button is clicked
+                          >
+                            <FindInPage color="success" />
+                          </button>
+                        </Tooltip>
+                        <Tooltip title="Edit">
+                          <button
+                            type="button"
+                            className="btn btn-transparent btn-sm"
+                            data-toggle="modal"
+                            data-target="#edit"
+                          >
+                            <Edit color="primary" />
+                          </button>
+                        </Tooltip>
+                        <Tooltip title="Delete">
+                          <IconButton
+                            sx={{ color: "#CE3419" }}
+                            onClick={() => alert("ini view")}
+                          >
+                            <Delete />
+                          </IconButton>
+                        </Tooltip>
+                      </Box>
+                    )}
+                    // renderRowActionMenuItems={({ table }) => [
+                    //   <MRT_ActionMenuItem //or just use a normal MUI MenuItem component
+                    //     icon={<Edit />}
+                    //     key="edit"
+                    //     label="Edit"
+                    //     onClick={() => console.info("Edit")}
+                    //     table={table}
+                    //   />,
+                    //   <MRT_ActionMenuItem
+                    //     icon={<Delete />}
+                    //     key="delete"
+                    //     label="Delete"
+                    //     onClick={() => console.info("Delete")}
+                    //     table={table}
+                    //   />,
+                    // ]}
                   />
                 </div>
               </div>
             </div>
           </div>
-          <div className="modal fade" id="modal-xl">
+          <div className="modal fade" id="view">
+            <div className="modal-dialog modal-xl">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h4 className="modal-title">Detail Modal</h4>
+                  <button
+                    type="button"
+                    className="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                    onClick={() => setSelectedMember(null)}
+                  >
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <div className="modal-body">
+                  {selectedMember && (
+                    <>
+                      <p>Nama: {selectedMember.nama}</p>
+                      <p>Pangkat: {selectedMember.pangkat}</p>
+                      <p>NRP: {selectedMember.nrp}</p>
+                      <p>Punya Rumah: {selectedMember.punyaRumah}</p>
+                      <p>Over Weight: {selectedMember.overWeight}</p>
+                      <p>Masalah: {selectedMember.masalah}</p>
+                      <p>Nama Istri: {selectedMember.namaIstri}</p>
+                      <p>Nama Anak: {selectedMember.namaAnak}</p>
+                      <p>Nomor KPI: {selectedMember.nomorKPI}</p>
+                    </>
+                  )}
+                </div>
+                <div className="modal-footer justify-content-between">
+                  <button
+                    type="button"
+                    className="btn btn-default"
+                    data-dismiss="modal"
+                    onClick={() => setSelectedMember(null)}
+                  >
+                    Close
+                  </button>
+                  <button type="button" className="btn btn-primary">
+                    Save changes
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* EDIT MODAL */}
+          <div className="modal fade" id="edit">
             <div className="modal-dialog modal-xl">
               <div className="modal-content">
                 <div className="modal-header">
