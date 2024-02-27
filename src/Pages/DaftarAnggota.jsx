@@ -20,46 +20,31 @@ const csvConfig = mkConfig({
 
 const data = [
   {
-    name: {
-      firstName: "John",
-      lastName: "Doe",
-    },
+    name: "name",
     address: "261 Erdman Ford",
     city: "East Daphne",
     state: "Kentucky",
   },
   {
-    name: {
-      firstName: "Jane",
-      lastName: "Doe",
-    },
+    name: "name",
     address: "769 Dominic Grove",
     city: "Columbus",
     state: "Ohio",
   },
   {
-    name: {
-      firstName: "Joe",
-      lastName: "Doe",
-    },
+    name: "name",
     address: "566 Brakus Inlet",
     city: "South Linda",
     state: "West Virginia",
   },
   {
-    name: {
-      firstName: "Kevin",
-      lastName: "Vandy",
-    },
+    name: "name",
     address: "722 Emie Stream",
     city: "Lincoln",
     state: "Nebraska",
   },
   {
-    name: {
-      firstName: "Joshua",
-      lastName: "Rolluffs",
-    },
+    name: "name",
     address: "32188 Larkin Turnpike",
     city: "Charleston",
     state: "South Carolina",
@@ -69,13 +54,8 @@ const DaftarAnggota = () => {
   const columns = useMemo(
     () => [
       {
-        accessorKey: "name.firstName", //access nested data with dot notation
-        header: "First Name",
-        size: 150,
-      },
-      {
-        accessorKey: "name.lastName",
-        header: "Last Name",
+        accessorKey: "name", //access nested data with dot notation
+        header: "Name",
         size: 150,
       },
       {
@@ -116,6 +96,7 @@ const DaftarAnggota = () => {
   const table = useMaterialReactTable({
     columns,
     data,
+    enableFullScreenToggle: false,
     enableRowSelection: true,
     columnFilterDisplayMode: "popover",
     paginationDisplayMode: "pages",
