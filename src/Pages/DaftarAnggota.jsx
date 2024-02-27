@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import Navbar from "../Components/Navbar";
 import Sidebar from "../Components/Sidebar";
 import Footer from "../Components/Footer";
@@ -20,82 +19,144 @@ const csvConfig = mkConfig({
 
 const data = [
   {
-    name: {
-      firstName: "John",
-      lastName: "Doe",
-    },
-    address: "261 Erdman Ford",
-    city: "East Daphne",
-    state: "Kentucky",
+    no: 1,
+    nama: "John Doe",
+    pangkat: "Letnan Satu",
+    nrp: "12345",
+    jabatan: "Komandan",
+    sakit: "Tidak",
+    punyaRumah: "Ya",
+    overWeight: "Tidak",
+    masalah: "Tidak",
+    namaIstri: "Jane Doe",
+    namaAnak: "Sarah Doe",
+    nomorKPI: "KPI-001",
   },
   {
-    name: {
-      firstName: "Jane",
-      lastName: "Doe",
-    },
-    address: "769 Dominic Grove",
-    city: "Columbus",
-    state: "Ohio",
+    no: 2,
+    nama: "Jane Smith",
+    pangkat: "Sersan",
+    nrp: "54321",
+    jabatan: "Petugas",
+    sakit: "Ya",
+    punyaRumah: "Tidak",
+    overWeight: "Ya",
+    masalah: "Tidak",
+    namaIstri: "John Smith",
+    namaAnak: "Michael Smith",
+    nomorKPI: "KPI-002",
   },
   {
-    name: {
-      firstName: "Joe",
-      lastName: "Doe",
-    },
-    address: "566 Brakus Inlet",
-    city: "South Linda",
-    state: "West Virginia",
+    no: 3,
+    nama: "Alice Johnson",
+    pangkat: "Kopral",
+    nrp: "98765",
+    jabatan: "Anggota",
+    sakit: "Tidak",
+    punyaRumah: "Ya",
+    overWeight: "Tidak",
+    masalah: "Ya",
+    namaIstri: "Bob Johnson",
+    namaAnak: "Emily Johnson",
+    nomorKPI: "KPI-003",
   },
   {
-    name: {
-      firstName: "Kevin",
-      lastName: "Vandy",
-    },
-    address: "722 Emie Stream",
-    city: "Lincoln",
-    state: "Nebraska",
+    no: 4,
+    nama: "Bob Brown",
+    pangkat: "Mayor",
+    nrp: "67890",
+    jabatan: "Komandan",
+    sakit: "Tidak",
+    punyaRumah: "Ya",
+    overWeight: "Tidak",
+    masalah: "Tidak",
+    namaIstri: "Alice Brown",
+    namaAnak: "David Brown",
+    nomorKPI: "KPI-004",
   },
   {
-    name: {
-      firstName: "Joshua",
-      lastName: "Rolluffs",
-    },
-    address: "32188 Larkin Turnpike",
-    city: "Charleston",
-    state: "South Carolina",
+    no: 5,
+    nama: "Charlie Wilson",
+    pangkat: "Letnan Dua",
+    nrp: "45678",
+    jabatan: "Petugas",
+    sakit: "Tidak",
+    punyaRumah: "Ya",
+    overWeight: "Tidak",
+    masalah: "Tidak",
+    namaIstri: "Emma Wilson",
+    namaAnak: "Olivia Wilson",
+    nomorKPI: "KPI-005",
   },
 ];
+
 const DaftarAnggota = () => {
   const columns = useMemo(
     () => [
       {
-        accessorKey: "name.firstName", //access nested data with dot notation
-        header: "First Name",
-        size: 150,
+        accessorKey: "no", // New property for row numbers
+        header: "No",
+        size: 50,
       },
       {
-        accessorKey: "name.lastName",
-        header: "Last Name",
-        size: 150,
-      },
-      {
-        accessorKey: "address", //normal accessorKey
-        header: "Address",
+        accessorKey: "nama", // Kolom "name" diganti menjadi "nama"
+        header: "Name",
         size: 200,
       },
       {
-        accessorKey: "city",
-        header: "City",
+        accessorKey: "pangkat", // Kolom "address" diganti menjadi "pangkat"
+        header: "Pangkat",
+        size: 200,
+      },
+      {
+        accessorKey: "nrp", // Kolom "city" diganti menjadi "nrp"
+        header: "NRP",
         size: 150,
       },
       {
-        accessorKey: "state",
-        header: "State",
+        accessorKey: "jabatan", // Kolom "state" diganti menjadi "jabatan"
+        header: "Jabatan",
+        size: 150,
+      },
+      {
+        accessorKey: "sakit",
+        header: "Sakit",
+        size: 150,
+      },
+      {
+        accessorKey: "punyaRumah",
+        header: "Punya Rumah",
+        size: 150,
+      },
+      {
+        accessorKey: "overWeight",
+        header: "Over Weight",
+        size: 150,
+      },
+      {
+        accessorKey: "masalah",
+        header: "Masalah",
+        size: 150,
+      },
+      {
+        accessorKey: "namaIstri",
+        header: "Nama Istri",
+        size: 150,
+      },
+      {
+        accessorKey: "namaAnak",
+        header: "Nama Anak",
+        size: 150,
+      },
+      {
+        accessorKey: "nomorKPI",
+        header: "Nomor KPI",
         size: 150,
       },
     ],
     []
   );
+
   const handleExportRows = (rows) => {
     const doc = new jsPDF();
     const tableData = rows.map((row) => Object.values(row.original));
@@ -116,7 +177,8 @@ const DaftarAnggota = () => {
   const table = useMaterialReactTable({
     columns,
     data,
-    enableRowSelection: true,
+    enableFullScreenToggle: false,
+    enableRowSelection: false,
     columnFilterDisplayMode: "popover",
     paginationDisplayMode: "pages",
     positionToolbarAlertBanner: "bottom",

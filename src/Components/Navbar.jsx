@@ -12,7 +12,7 @@ const Navbar = () => {
           </a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a type="button" onClick={() => navigate('/')} class="nav-link">
+          <a type="button" onClick={() => navigate("/")} class="nav-link">
             Beranda
           </a>
         </li>
@@ -31,7 +31,7 @@ const Navbar = () => {
             <span class="dropdown-item dropdown-header">Pengaturan</span>
             <div class="dropdown-divider"></div>
             <a href="#" class="dropdown-item">
-              <i class="fas fa-user-cog mr-2"></i>  Akun
+              <i class="fas fa-user-cog mr-2"></i> Akun
               <span class="float-right text-muted text-sm">3 mins</span>
             </a>
             <div class="dropdown-divider"></div>
@@ -39,7 +39,6 @@ const Navbar = () => {
               <i class="fas fa-sign-out-alt mr-2"></i> Keluar
             </a>
             <div class="dropdown-divider"></div>
-           
           </div>
         </li>
       </ul>
