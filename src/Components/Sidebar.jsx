@@ -66,7 +66,6 @@ const Sidebar = () => {
                 <i class="nav-icon fas fa-address-book" />
                 <p>
                   Daftar Anggota
-                  <span class="badge badge-light right">2</span>
                 </p>
               </a>
             </li>
