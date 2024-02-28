@@ -21,13 +21,11 @@ import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 import { useNavigate } from "react-router-dom";
 import { Edit, Delete, FindInPage } from "@mui/icons-material";
-import { utils, writeFile } from "xlsx";
 const csvConfig = mkConfig({
   fieldSeparator: ",",
   decimalSeparator: ".",
   useKeysAsHeaders: true,
 });
-
 const data = [
   {
     no: 1,
@@ -302,6 +300,31 @@ const DaftarAnggota = () => {
                             <Delete />
                           </IconButton>
                         </Tooltip>
+                      </Box>
+                    )}
+                    renderTopToolbarCustomActions={({ table }) => (
+                      <Box
+                        sx={{
+                          display: "flex",
+                          gap: "16px",
+                          padding: "8px",
+                          flexWrap: "wrap",
+                        }}
+                      >
+                        <Button
+                          disabled={
+                            table.getPrePaginationRowModel().rows.length === 0
+                          }
+                          //export all rows, including from the next page, (still respects filtering and sorting)
+                          onClick={() =>
+                            handleExportRows(
+                              table.getPrePaginationRowModel().rows
+                            )
+                          }
+                          startIcon={<i class="fas fa-file-pdf"></i>}
+                        >
+                          Export To PDF
+                        </Button>
                       </Box>
                     )}
                     // renderRowActionMenuItems={({ table }) => [
