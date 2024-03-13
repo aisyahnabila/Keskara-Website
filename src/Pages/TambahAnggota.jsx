@@ -246,7 +246,11 @@ const TambahAnggota = () => {
                       </button>
                     </div>
                     <div className="col-6">
-                      <button type="submit" onClick={alert('helloworld')} className="btn btn-danger btn-block">
+                      <button
+                        type="submit"
+                        onClick={() => alert("helloworld")}
+                        className="btn btn-danger btn-block"
+                      >
                         Kirim
                       </button>
                     </div>
