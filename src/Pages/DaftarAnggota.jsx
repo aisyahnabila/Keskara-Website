@@ -251,100 +251,99 @@ const DaftarAnggota = () => {
         </div>
         <section class="content">
           <div class="container-fluid">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">Daftar Anggota</h3>
-                </div>
-                <div class="card-body">
-                  {/* <button
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Daftar Anggota</h3>
+              </div>
+              <div class="card-body">
+                {/* <button
                     type="button"
                     class="btn btn-info mb-2"
                     onClick={() => navigate("/TambahDataAnggota")}
                   >
                     + Tambah Data Anggota
                   </button> */}
-                  <MaterialReactTable
-                    columns={columns}
-                    data={data}
-                    enableRowActions
-                    positionActionsColumn="last"
-                    renderRowActions={({ row }) => (
-                      <Box sx={{ display: "flex" }}>
-                        <Tooltip title="Lihat">
-                          <button
-                            type="button"
-                            className="btn btn-transparent btn-sm"
-                            data-toggle="modal"
-                            data-target="#view"
-                            onClick={() => handleViewClick(row.original)} // Set selected member when view button is clicked
-                          >
-                            <FindInPage color="success" />
-                          </button>
-                        </Tooltip>
-                        <Tooltip title="Edit">
-                          <button
-                            type="button"
-                            className="btn btn-transparent btn-sm"
-                            data-toggle="modal"
-                            data-target="#edit"
-                          >
-                            <Edit color="primary" />
-                          </button>
-                        </Tooltip>
-                        <Tooltip title="Delete">
-                          <IconButton
-                            sx={{ color: "#CE3419" }}
-                            onClick={() => alert("ini view")}
-                          >
-                            <Delete />
-                          </IconButton>
-                        </Tooltip>
-                      </Box>
-                    )}
-                    renderTopToolbarCustomActions={({ table }) => (
-                      <Box
-                        sx={{
-                          display: "flex",
-                          gap: "16px",
-                          padding: "8px",
-                          flexWrap: "wrap",
-                        }}
-                      >
-                        <Button
-                          disabled={
-                            table.getPrePaginationRowModel().rows.length === 0
-                          }
-                          //export all rows, including from the next page, (still respects filtering and sorting)
-                          onClick={() =>
-                            handleExportRows(
-                              table.getPrePaginationRowModel().rows
-                            )
-                          }
-                          startIcon={<i class="fas fa-file-pdf"></i>}
+                <MaterialReactTable
+                  enableFullScreenToggle={false}
+                  columns={columns}
+                  data={data}
+                  enableRowActions
+                  positionActionsColumn="last"
+                  renderRowActions={({ row }) => (
+                    <Box sx={{ display: "flex" }}>
+                      <Tooltip title="Lihat">
+                        <button
+                          type="button"
+                          className="btn btn-transparent btn-sm"
+                          data-toggle="modal"
+                          data-target="#view"
+                          onClick={() => handleViewClick(row.original)} // Set selected member when view button is clicked
                         >
-                          Export To PDF
-                        </Button>
-                      </Box>
-                    )}
-                    // renderRowActionMenuItems={({ table }) => [
-                    //   <MRT_ActionMenuItem //or just use a normal MUI MenuItem component
-                    //     icon={<Edit />}
-                    //     key="edit"
-                    //     label="Edit"
-                    //     onClick={() => console.info("Edit")}
-                    //     table={table}
-                    //   />,
-                    //   <MRT_ActionMenuItem
-                    //     icon={<Delete />}
-                    //     key="delete"
-                    //     label="Delete"
-                    //     onClick={() => console.info("Delete")}
-                    //     table={table}
-                    //   />,
-                    // ]}
-                  />
-                </div>
+                          <FindInPage color="success" />
+                        </button>
+                      </Tooltip>
+                      <Tooltip title="Edit">
+                        <button
+                          type="button"
+                          className="btn btn-transparent btn-sm"
+                          data-toggle="modal"
+                          data-target="#edit"
+                        >
+                          <Edit color="primary" />
+                        </button>
+                      </Tooltip>
+                      <Tooltip title="Delete">
+                        <IconButton
+                          sx={{ color: "#CE3419" }}
+                          onClick={() => alert("ini view")}
+                        >
+                          <Delete />
+                        </IconButton>
+                      </Tooltip>
+                    </Box>
+                  )}
+                  renderTopToolbarCustomActions={({ table }) => (
+                    <Box
+                      sx={{
+                        display: "flex",
+                        gap: "16px",
+                        padding: "8px",
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      <Button
+                        disabled={
+                          table.getPrePaginationRowModel().rows.length === 0
+                        }
+                        //export all rows, including from the next page, (still respects filtering and sorting)
+                        onClick={() =>
+                          handleExportRows(
+                            table.getPrePaginationRowModel().rows
+                          )
+                        }
+                        startIcon={<i class="fas fa-file-pdf"></i>}
+                      >
+                        Export To PDF
+                      </Button>
+                    </Box>
+                  )}
+                  // renderRowActionMenuItems={({ table }) => [
+                  //   <MRT_ActionMenuItem //or just use a normal MUI MenuItem component
+                  //     icon={<Edit />}
+                  //     key="edit"
+                  //     label="Edit"
+                  //     onClick={() => console.info("Edit")}
+                  //     table={table}
+                  //   />,
+                  //   <MRT_ActionMenuItem
+                  //     icon={<Delete />}
+                  //     key="delete"
+                  //     label="Delete"
+                  //     onClick={() => console.info("Delete")}
+                  //     table={table}
+                  //   />,
+                  // ]}
+                />
               </div>
             </div>
           </div>
