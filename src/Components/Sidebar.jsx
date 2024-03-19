@@ -64,9 +64,7 @@ const Sidebar = () => {
                 class={`nav-link ${isActive("/DaftarAnggota")}`}
               >
                 <i class="nav-icon fas fa-address-book" />
-                <p>
-                  Daftar Anggota
-                </p>
+                <p>Daftar Anggota</p>
               </a>
             </li>
             <li class="nav-header">PENAMBAHAN DATA</li>
@@ -81,7 +79,11 @@ const Sidebar = () => {
               </a>
             </li>
             <li class="nav-item">
-              <a href="pages/calendar.html" class="nav-link">
+              <a
+                onClick={() => navigate("/TambahUser")}
+                type="button"
+                class={`nav-link ${isActive("/TambahUser")}`}
+              >
                 <i class="nav-icon fas fa-plus" />
                 <p>Tambah User</p>
               </a>

@@ -11,9 +11,8 @@ import Beranda from "./Pages/Beranda";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DaftarAnggota from "./Pages/DaftarAnggota";
 import TambahAnggota from "./Pages/TambahAnggota";
-
+import TambahUser from "./Pages/TambahUser";
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
     <Router>
@@ -21,6 +20,7 @@ function App() {
         <Route path="/" element={<Beranda />} />
         <Route path="/DaftarAnggota" element={<DaftarAnggota />} />
         <Route path="/TambahDataAnggota" element={<TambahAnggota />} />
+        <Route path="/TambahUser" element={<TambahUser />} />
       </Routes>
     </Router>
   );

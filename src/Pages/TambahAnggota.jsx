@@ -22,7 +22,7 @@ const TambahAnggota = () => {
                   <li class="breadcrumb-item">
                     <a href="#">Menu</a>
                   </li>
-                  <li class="breadcrumb-item active">Papan Utama</li>
+                  <li class="breadcrumb-item active">Tambah Anggota</li>
                 </ol>
               </div>
               {/* /.col */}
@@ -241,13 +241,13 @@ const TambahAnggota = () => {
                   </div>
                   <div className="row">
                     <div className="col-6">
-                      <button className="btn btn-outline-danger btn-block">
+                      <button type="button" className="btn btn-outline-danger btn-block">
                         Reset
                       </button>
                     </div>
                     <div className="col-6">
                       <button
-                        type="submit"
+                        type="button"
                         onClick={() => alert("helloworld")}
                         className="btn btn-danger btn-block"
                       >

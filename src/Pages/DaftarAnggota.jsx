@@ -351,7 +351,9 @@ const DaftarAnggota = () => {
             <div className="modal-dialog modal-xl">
               <div className="modal-content">
                 <div className="modal-header">
-                  <h4 className="modal-title">Detail Modal</h4>
+                  {selectedMember && (
+                    <h4 className="modal-title"> {selectedMember.nama}</h4>
+                  )}
                   <button
                     type="button"
                     className="close"
