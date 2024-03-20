@@ -90,7 +90,9 @@ const Sidebar = () => {
             </li>
             <li class="nav-header">OPSI LAIN</li>
             <li class="nav-item">
-              <a href="pages/calendar.html" class="nav-link">
+              <a onClick={() => navigate("/LoginPage")}
+                type="button"
+                class={`nav-link ${isActive("/LoginPage")}`}>
                 <i class="nav-icon fas fa-user" />
                 <p>Akun Saya</p>
               </a>

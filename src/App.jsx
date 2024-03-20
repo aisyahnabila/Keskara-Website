@@ -12,7 +12,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DaftarAnggota from "./Pages/DaftarAnggota";
 import TambahAnggota from "./Pages/TambahAnggota";
 import TambahUser from "./Pages/TambahUser";
-import Login_page from "./Pages/LoginPage";
+import LoginPage from "./Pages/LoginPage";
 function App() {
 
   return (
@@ -22,7 +22,7 @@ function App() {
         <Route path="/DaftarAnggota" element={<DaftarAnggota />} />
         <Route path="/TambahDataAnggota" element={<TambahAnggota />} />
         <Route path="/TambahUser" element={<TambahUser />} />
-        <Route path="/login_page" element={<Login_page />} />
+        <Route path="/LoginPage" element={<LoginPage />} />
       </Routes>
     </Router>
   );
