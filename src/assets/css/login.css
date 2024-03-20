@@ -1,0 +1,43 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #dc3545;
+    font-family: sans-serif;
+}
+
+form {
+    width: 30%;
+    background-color: #f8f9fa;
+    padding: 40px;
+    margin-top: 120px;
+    border-radius: 10px;
+}
+
+form .btn-primary {
+    border: none;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #dc3545;
+}
+
+form .btn-primary:hover {
+    background-color: #ff7f7f;
+}
+
+h4 {
+    font-weight: 700;
+}
+
+.form-label {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+@media only screen and (max-width:600px) {
+    form {
+        width: 100% !important;
+    }
+}

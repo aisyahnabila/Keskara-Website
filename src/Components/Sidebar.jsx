@@ -54,7 +54,7 @@ const Sidebar = () => {
                 class={`nav-link ${isActive("/")}`}
               >
                 <i class="nav-icon fas fa-server" />
-                <p>Papan Utama</p>
+                <p>Dashboard</p>
               </a>
             </li>
             <li class="nav-item">
