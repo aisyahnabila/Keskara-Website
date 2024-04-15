@@ -14,7 +14,6 @@ import TambahAnggota from "./Pages/TambahAnggota";
 import TambahUser from "./Pages/TambahUser";
 import LoginPage from "./Pages/LoginPage";
 function App() {
-
   return (
     <Router>
       <Routes>
