@@ -5,20 +5,29 @@ import Footer from "../Components/Footer";
 import { TextFields } from "@mui/icons-material";
 import firebaseConfig from "../firebase/firebaseConfig";
 import { getDatabase, ref, set } from "firebase/database";
+import pangkatlist from "../data/Pangkat";
+import { v4 as uuidv4 } from "uuid";
 const TambahAnggota = () => {
-  const [Nama, setNama] = useState('');
+  const [Nama, setNama] = useState("");
+  const [Pangkat, setPangkat] = useState("");
+  const [NRP, setNRP] = useState("");
+  const [Sakit, setSakit] = useState("");
 
   const inputData = () => {
-    
-    console.log(Nama)
+    const uid = uuidv4();
+    console.log(Nama + " Dengan UID " + uid);
+    console.log();
     const db = getDatabase();
-    set(ref(db, 'users/' ), {
-      Nama
+    set(ref(db, `Anggota/${uid}`), {
+      Nama,
+      Pangkat,
+      NRP,
+      Sakit,
     });
-    
+
     // const db = getDatabase();
     // set(ref)
-  }
+  };
 
   return (
     <>
@@ -71,78 +80,15 @@ const TambahAnggota = () => {
                     </div>
                     <div class="form-group">
                       <label for="pangkat">Pangkat</label>
-                      <select class="custom-select" id="pangkat">
+                      <select
+                        class="custom-select"
+                        id="pangkat"
+                        onChange={(text) => setPangkat(text.target.value)}
+                      >
                         <option value="">Pilih Pangkat</option>
-                        <option value="Jenderal Polisi">Jenderal Polisi</option>
-                        <option value="Komisaris Jenderal Polisi (KomjenPol)">
-                          Komisaris Jenderal Polisi (KomjenPol)
-                        </option>
-                        <option value="Inspektur Jenderal Polisi (Irjen Pol)">
-                          Inspektur Jenderal Polisi (Irjen Pol)
-                        </option>
-                        <option value="Brigadir Jenderal Polisi (Brigjen Pol)">
-                          Brigadir Jenderal Polisi (Brigjen Pol)
-                        </option>
-                        <option value="Perwira Menengah (Pamen) Polri">
-                          Perwira Menengah (Pamen) Polri
-                        </option>
-                        <option value="Komisaris Besar Polisi (Kombes Pol)">
-                          Komisaris Besar Polisi (Kombes Pol)
-                        </option>
-                        <option value="Ajun Komisaris Besar Polisi (AKBP)">
-                          Ajun Komisaris Besar Polisi (AKBP)
-                        </option>
-                        <option value="Komisaris Polisi (Kompol)">
-                          Komisaris Polisi (Kompol)
-                        </option>
-                        <option value="Perwira Pertama (Pama) Polri">
-                          Perwira Pertama (Pama) Polri
-                        </option>
-                        <option value="Ajun Komisaris Polisi (AKP)">
-                          Ajun Komisaris Polisi (AKP)
-                        </option>
-                        <option value="Inspektur Polisi Satu (Iptu)">
-                          Inspektur Polisi Satu (Iptu)
-                        </option>
-                        <option value="Inspektur Polisi Dua (Ipda)">
-                          Inspektur Polisi Dua (Ipda)
-                        </option>
-                        <option value="Ajun Inspektur Polisi Satu (Aiptu)">
-                          Ajun Inspektur Polisi Satu (Aiptu)
-                        </option>
-                        <option value="Ajun Inspektur Polisi Dua (Aipda)">
-                          Ajun Inspektur Polisi Dua (Aipda)
-                        </option>
-                        <option value="Brigadir Polisi Kepala (Bripka)">
-                          Brigadir Polisi Kepala (Bripka)
-                        </option>
-                        <option value="Brigadir Polisi (Brigpol)">
-                          Brigadir Polisi (Brigpol)
-                        </option>
-                        <option value="Brigadir Polisi Satu (Briptu)">
-                          Brigadir Polisi Satu (Briptu)
-                        </option>
-                        <option value="Brigadir Polisi Dua (Bripda)">
-                          Brigadir Polisi Dua (Bripda)
-                        </option>
-                        <option value="Ajun Brigadir Polisi (Abrip)">
-                          Ajun Brigadir Polisi (Abrip)
-                        </option>
-                        <option value="Ajun Brigadir Polisi Satu (Abriptu)">
-                          Ajun Brigadir Polisi Satu (Abriptu)
-                        </option>
-                        <option value="Ajun Brigadir Polisi Dua (Abripda)">
-                          Ajun Brigadir Polisi Dua (Abripda)
-                        </option>
-                        <option value="Bhayangkara Kepala (Bharaka)">
-                          Bhayangkara Kepala (Bharaka)
-                        </option>
-                        <option value="Bhayangkara Satu (Bharatu)">
-                          Bhayangkara Satu (Bharatu)
-                        </option>
-                        <option value="Bhayangkara Dua (Bharada)">
-                          Bhayangkara Dua (Bharada)
-                        </option>
+                        {pangkatlist.map((item, index) => (
+                          <option value={item.pangkat}>{item.pangkat}</option>
+                        ))}
                       </select>
                     </div>
                     <div class="form-group">
@@ -152,6 +98,7 @@ const TambahAnggota = () => {
                         class="form-control"
                         id="nrp"
                         placeholder="NRP"
+                        onChange={(text) => setNRP(text.target.value)}
                       />
                     </div>
 
@@ -162,6 +109,7 @@ const TambahAnggota = () => {
                         class="form-control"
                         id="sakit"
                         placeholder="Sakit"
+                        onChange={(text) => setSakit(text.target.value)}
                       />
                     </div>
                     <div class="form-group">
