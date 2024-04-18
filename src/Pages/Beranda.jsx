@@ -2,8 +2,10 @@ import React from "react";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import Sidebar from "../Components/Sidebar";
-
+import firebaseConfig from "../firebase/firebaseConfig";
+import { getDatabase, ref, onValue } from "firebase/database";
 const Beranda = () => {
+  
   return (
     <>
       <Navbar />

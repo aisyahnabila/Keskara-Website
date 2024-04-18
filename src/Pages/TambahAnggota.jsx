@@ -12,7 +12,10 @@ const TambahAnggota = () => {
   const [Pangkat, setPangkat] = useState("");
   const [NRP, setNRP] = useState("");
   const [Sakit, setSakit] = useState("");
-
+  const [punyaRumah, setPunyaRumah] = useState("");
+  const [Tinggi, setTinggiBadan] = useState("");
+  const [Berat, setBeratBadan] = useState("");
+  console.log(punyaRumah);
   const inputData = () => {
     const uid = uuidv4();
     console.log(Nama + " Dengan UID " + uid);
@@ -23,8 +26,11 @@ const TambahAnggota = () => {
       Pangkat,
       NRP,
       Sakit,
+      punyaRumah,
+      Tinggi,
+      Berat
     });
-
+    console.log('Rumah :' , punyaRumah)
     // const db = getDatabase();
     // set(ref)
   };
@@ -122,32 +128,38 @@ const TambahAnggota = () => {
                       />
                     </div>
                   </div>
+
                   <div className="col-6">
                     <div class="form-group">
                       <label for="punyaRumah">Punya Rumah</label>
-                      <input
-                        type="text"
-                        class="form-control"
+                      <select
+                        class="custom-select"
                         id="punyaRumah"
-                        placeholder="Punya Rumah"
-                      />
+                        onChange={(text) => setPunyaRumah(text.target.value)}
+                      >
+                        <option value="" disabled>Pilih Salah Satu</option>
+                        <option value="Iya">Ya</option>
+                        <option value="Belum">Belum</option>
+                      </select>
                     </div>
                     <div class="form-group">
                       <label for="Tinggi">Tinggi</label>
                       <input
-                        type="text"
+                        type="number"
                         class="form-control"
                         id="tinggi"
                         placeholder="Tinggi Badan"
+                        onChange={(text) => setTinggiBadan(text.target.value)}
                       />
                     </div>
                     <div class="form-group">
                       <label for="Berat">Berat</label>
                       <input
-                        type="text"
+                        type="number"
                         class="form-control"
                         id="berat"
                         placeholder="Berat Badan"
+                        onChange={(text) => setBeratBadan(text.target.value)}
                       />
                     </div>
                     <div class="form-group">
