@@ -57,16 +57,6 @@ const Sidebar = () => {
                 <p>Dashboard</p>
               </a>
             </li>
-            <li class="nav-item">
-              <a
-                onClick={() => navigate("/DaftarAnggota")}
-                type="button"
-                class={`nav-link ${isActive("/DaftarAnggota")}`}
-              >
-                <i class="nav-icon fas fa-address-book" />
-                <p>Daftar Anggota</p>
-              </a>
-            </li>
             <li class="nav-header">PENAMBAHAN DATA</li>
             <li class="nav-item">
               <a
@@ -90,9 +80,11 @@ const Sidebar = () => {
             </li>
             <li class="nav-header">OPSI LAIN</li>
             <li class="nav-item">
-              <a onClick={() => navigate("/LoginPage")}
+              <a
+                onClick={() => navigate("/LoginPage")}
                 type="button"
-                class={`nav-link ${isActive("/LoginPage")}`}>
+                class={`nav-link ${isActive("/LoginPage")}`}
+              >
                 <i class="nav-icon fas fa-user" />
                 <p>Akun Saya</p>
               </a>
